@@ -36,6 +36,9 @@ add_action('wp_enqueue_scripts', 'load_js');
 //Theme option for adding wp menus.
 add_theme_support('menus');
 
+//Adding support to add images to blog posts.
+add_theme_support('post-thumbnails');
+
 //Theme menus
 
 register_nav_menus(
@@ -45,3 +48,7 @@ register_nav_menus(
         'footer-menu' => 'Footer Menu Location',
     )
 );
+
+//Custom Image Sizes
+add_image_size('blog-large', 800, 400, false);
+add_image_size('blog-small', 300, 200, true);
