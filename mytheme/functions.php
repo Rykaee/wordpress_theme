@@ -2,7 +2,7 @@
 
 
 /*
-Functions for loading Bootstrap and your own css and using them.
+    Functions for keep everything work.
 */
 
 // Loading Bootstrap css and your own css-file.
@@ -39,6 +39,9 @@ add_theme_support('menus');
 //Adding support to add images to blog posts.
 add_theme_support('post-thumbnails');
 
+//Adding support to widgets.
+add_theme_support('widgets');
+
 //Theme menus
 
 register_nav_menus(
@@ -49,6 +52,36 @@ register_nav_menus(
     )
 );
 
+
+
 //Custom Image Sizes
 add_image_size('blog-large', 800, 400, false);
 add_image_size('blog-small', 300, 200, true);
+
+//Registering sidebars.
+function my_sidebars(){
+
+    register_sidebar(
+        array(
+            'name' => 'Page Sidebar',
+            'id' => 'page-sidebar',
+            'before_title' => '<h4 class="widget-title">',
+            'after_title' => '</h4>',
+            'before_widget' => '',
+            'after_widget'  => '',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name' => 'Blog Sidebar',
+            'id' => 'blog-sidebar',
+            'before_title' => '<h4 class="widget-title">',
+            'after_title' => '</h4>',
+            'before_widget' => '',
+            'after_widget'  => '',
+        )
+    );
+}
+
+add_action('widgets_init', 'my_sidebars');
