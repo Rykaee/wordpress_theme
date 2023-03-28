@@ -2,6 +2,7 @@
 
 
 /*
+    Author: Roosa Kontinen, 2023.
     Functions for keep everything work.
 */
 
