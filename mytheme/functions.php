@@ -86,3 +86,46 @@ function my_sidebars(){
 }
 
 add_action('widgets_init', 'my_sidebars');
+
+//Custom post types function.
+function my_first_post_type(){
+
+    $args = array (
+        
+        //If you want to add label to that post type.
+        'labels' => array(
+                    'name' => 'Cars',
+                    'singular_name' => 'Car',
+                    ),
+        'hierarchical' => true,
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-car',
+        'supports' => array('title', 'editor', 'thumbnail'),
+
+        //If you want to change page name like test.fi/cars to test.fi/my-cars
+        //'rewrite' => array('slug' => 'my-cars'),
+    );
+
+    register_post_type('cars', $args);
+
+}
+
+add_action('init', 'my_first_post_type');
+
+function my_taxonomy(){
+
+        $args = array(
+
+            'labels' => array(
+                        'name' => 'Brands',
+                        'singular_name' => 'Brand',
+                        ),
+            'public' => true,
+            'hierarchical' => true,
+        );
+
+    register_taxonomy('brands', array('cars'), $args);
+}
+
+add_action('init', 'my_taxonomy');

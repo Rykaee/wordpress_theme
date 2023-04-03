@@ -1,15 +1,7 @@
 <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
 
-    <?php echo "<p>" .  get_the_date('l, d/m/Y') . "</p>";?>
-
     <?php the_content();?>
 
-    <?php
-        //Adding posts to who was author.
-        $fname = get_the_author_meta('first_name');
-        $lname = get_the_author_meta('last_name');
-        echo "<p>" . "Posted by: " .  $fname . ' ' . $lname . "</p>";
-    ?>
 
     <?php
         //Get the tags and looping them to separate.
@@ -36,5 +28,6 @@
             comments_template();
         */
         ?>
+        <?php echo "<p>" .  get_the_date('l, d/m/Y') . "</p>";?>
 
 <?php endwhile; else: endif;?>
