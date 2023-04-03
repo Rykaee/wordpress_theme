@@ -101,7 +101,7 @@ function my_first_post_type(){
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-car',
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
 
         //If you want to change page name like test.fi/cars to test.fi/my-cars
         //'rewrite' => array('slug' => 'my-cars'),

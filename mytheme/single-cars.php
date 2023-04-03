@@ -19,9 +19,27 @@
                 ?>
             </div>
             <div class="col-lg-6">
+                <h3>Details</h3>
+                <ul>
+                    <li>
+                        Color: <?php the_field('color');?>
+                    </li>
 
+                    <li>
+                        Registration: <?php the_field('registration');?>
+                    </li>
+                </ul>
+                <h3>Features</h3>
+                <?php
+                    $features = get_field('features');
+                    if( $features ): ?>
+                    <ul>
+                        <?php foreach( $features as $feature ): ?>
+                            <li><?php echo $feature; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>  
             </div>
-
         </div>
 
         

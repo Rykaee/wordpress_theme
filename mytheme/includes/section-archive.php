@@ -15,7 +15,7 @@
                 //Making posts show only little of them.
                 the_excerpt();
             ?>
-            <a href="<?php the_permalink();?>" class="btn btn-success">Read more</a>
+            <a href="<?php the_permalink();?>" class="btn btn-dark">Read more</a>
         </div>
     </div>
 </div>
