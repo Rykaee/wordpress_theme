@@ -17,6 +17,7 @@
                     //Single blog post with multiple sections in it.
                     wp_link_pages();
                 ?>
+                <?php get_template_part('includes/form', 'enquiry');?>
             </div>
             <div class="col-lg-6">
                 <h3>Details</h3>

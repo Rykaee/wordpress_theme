@@ -129,3 +129,55 @@ function my_taxonomy(){
 }
 
 add_action('init', 'my_taxonomy');
+
+
+add_action('wp_ajax_enquiry', 'enquiry_form');
+add_action('wp_ajax_nopriv_enquiry', 'enquiry_form');
+
+//Function for form controlling and email sending
+function enquiry_form(){
+
+    $formdata = [];
+
+    wp_parse_str($_POST['enquiry'], $formdata);
+
+    //Getting admin email address
+    $admin_email = get_option('admin_email');
+
+    //Email headers
+    $headers[] = 'Content-Type: text-html; charset=UTF-8';
+    $headers[] = 'From: My Website <' . $admin_email . '>';
+    $headers[] = 'Reply-to:' . $formdata['email'];
+
+    //Checking wo we are sending to
+    $send_to = $admin_email;
+
+    //Subject
+    $subject = "Enquiry from " . $formdata['fname'] . ' ' . $formdata['lname'];
+
+    //Message
+    $message = '';
+
+    foreach($formdata as $index => $field){
+        $message .= '<strong>' . $index . '</strong>' . $field . '<br />';
+    }
+    
+    try {
+
+        if(wp_mail($send_to, $subject, $message, $headers)){
+
+            wp_send_json_success('Email sent');
+        }
+        else {
+
+            wp_send_json_error('Email error');
+        }
+    } catch (Exeption $e){
+
+        wp_send_json_error($e->getMessage());
+    }
+
+
+    wp_send_json_success($formdata['fname']);
+
+}
