@@ -32,7 +32,7 @@
 </form>
 
 <script>
-
+    //Function for form.
     (function($){
 
         $('#enquiry').submit( function(event){
